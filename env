@@ -1,0 +1,5 @@
+        var firebaseConfig = {
+            apiKey: "AIzaSyDKClDLbhOMkmYIU0PepXN3XS3Ip5tBCyQ", authDomain: "aurudu-2fdb8.firebaseapp.com", databaseURL: "https://aurudu-2fdb8.firebaseio.com",
+            projectId: "aurudu-2fdb8", storageBucket: "aurudu-2fdb8.appspot.com", messagingSenderId: "772587789062",
+            appId: "1:772587789062:web:f5c3f3698fd03f79151c87", measurementId: "G-BVNN9V0T0B"
+        };

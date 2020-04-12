@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://image.freepik.com/free-photo/old-grunge-cement-wall-backgrounds_34552-195.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-s {
+            display: grid;
+            grid-template-columns: 300px;
+            grid-template-rows: 210px 210px 80px;
+            grid-template-areas: "image""text""stats";
+
+            font-family: roboto;
+            border-radius: 18px;
+            background-color: #fff;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+            text-align: center;
+            transition: 0.5s ease;
+            cursor: pointer;
+        }
+
+        .card-s-image {
+            grid-area: image;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-size: cover;
+            margin: 1px 74px;
+        }
+
+        .card-s-text {
+            grid-area: text;
+            margin: 25px;
+
+        }
+
+        .card-s-text .date {
+            color: rgb(255, 7, 110);
+            font-size: 13px;
+
+        }
+
+        .card-s-text h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .card-s-text p {
+            color: grey;
+            font-size: 15px;
+            font-weight: 300px;
+        }
+
+        .card-s-stats {
+            grid-area: stats;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            background-color: rgb(255, 7, 110);
+        }
+
+        .card-s-stats .stat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .card-s-stats .value {
+            font-size: 22px;
+            font-weight: 500px;
+        }
+
+        .card-s-stats .type {
+            font-size: 11px;
+            font-weight: 300px;
+            text-transform: uppercase;
+        }
+
+        .card-s-stats .border {
+            border-left: 1px solid rgb(172, 26, 87);
+            border-right: 1px solid rgb(172, 26, 87);
+        }
+
+        .card-s-stats .value sup {
+            font-size: 12px;
+        }
+
+        .card-s:hover {
+            transform: scale(1.2);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="cards"></div>
+    <div id="cards"></div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $('#cards').append(cardGen({
+            img: 'https://pngimage.net/wp-content/uploads/2018/05/clash-royale-png-13.png',
+            top_title: '4 days a go',
+            title: 'Post One',
+            sub_title: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
+            stat_1_value: '4<sup>m</sup>',
+            stat_1_type: 'READ',
+            stat_2_value: '5123',
+            stat_2_type: 'VIEWS',
+            stat_3_value: '45',
+            stat_3_type: 'PLAYS',
+        }))
+        function cardGen({ img, top_title, title, sub_title, stat_1_value, stat_1_type, stat_2_value, stat_2_type, stat_3_value, stat_3_type }) {
+            return `
+    <div class="card-s">
+        <div class="card-s-image" style="background-image: url(`+ img + `);"></div>
+        <div class="card-s-text">
+            <span class="date">`+ top_title + `</span>
+            <h2>`+ title + `</h2>
+            <p>`+ sub_title + `
+            </p>
+        </div>
+        <div class="card-s-stats">
+            <div class="stat">
+                <div class="value">`+ stat_1_value + `</div>
+                <div class="type">`+ stat_1_type + `</div>
+            </div>
+            <div class="stat border">
+                <div class="value">`+ stat_2_value + `</div>
+                <div class="type">`+ stat_2_type + `</div>
+            </div>
+            <div class="stat">
+                <div class="value">`+ stat_3_value + `</div>
+                <div class="type">`+ stat_3_type + `</div>
+            </div>
+        </div>
+    </div>
+            `
+        }
+
+    </script>
+</body>
+
+</html>

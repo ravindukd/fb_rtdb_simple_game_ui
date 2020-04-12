@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/botui/0.3.9/botui.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+            background-color: #E9EBF2;
+            padding: 20px;
+        }
+
+        .card-wrapper {
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            border-radius: 18px;
+        }
+
+        .main-row {
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            display: flex;
+            margin-left: 0px;
+        }
+
+        .tbotui {
+            height: 300px;
+        }
+
+        @media screen and (max-height: 450px) {
+            body {
+                padding: 10px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card shadow p-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="card-title"><span class="username"></span> <br><small>new-bie</small></h5>
+                        </div>
+
+                        <img src="https://minotar.net/bust/sal/75.png" class="rounded respo" alt="Cinque Terre">
+                    </div>
+                </div>
+            </div>
+            <hr id="chat_line">
+            <div class="card shadow" id="chat_box">
+                <div class="card-body">
+                    <h5 class="card-title d-flex justify-content-between">
+                        Chat
+                        <i id="hide_chat" class="fas fa-eye-slash"></i></h5>
+                    <div id="my-botui-app" class="tbotui">
+                        <bot-ui>
+                            </botui>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 row main-row">
+            <div class="card-wrapper col-lg-3">
+                <div class="card shadow ">
+                    <img class="card-img-top"
+                        src="https://pngimage.net/wp-content/uploads/2018/05/clash-royale-png-13.png"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper col-lg-3">
+                <div class="card shadow ">
+                    <!-- <img class="card-img-top p-2" src="./src/papaya.jpg" alt="Card image cap"> -->
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <input type="number" class="form-control" id="papaya_input"> <br>
+                        <button class="btn btn-info btn-md" id="papaya_submit">SUBMIT</button>
+                        <br>
+                        <ul class="list-group" id="papaya_ans_list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-wrapper col-lg-3">
+                <div class="card shadow ">
+                    <img class="card-img-top"
+                        src="https://pngimage.net/wp-content/uploads/2018/05/clash-royale-png-13.png"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper col-lg-4">
+                <div class="card shadow ">
+                    <img class="card-img-top"
+                        src="https://pngimage.net/wp-content/uploads/2018/05/clash-royale-png-13.png"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper col-lg-3">
+                <div class="card shadow ">
+                    <img class="card-img-top p-2" src="./src/winners.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Leaderboard</h5>
+                        <ul class="list-group" id="princes">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper col-lg-3">
+                <div class="card shadow ">
+                    <img class="card-img-top p-2" src="./src/winners.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Leaderboard</h5>
+                        <ul class="list-group" id="player_list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/botui/0.3.9/botui.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script>
+        var username;
+        var pass_code;
+        var auth = false
+        var botui = new BotUI('my-botui-app');
+        var ip = '0.0.0.0'
+        var ud
+        var ukey
+
+
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        var database = firebase.database();
+        var users = firebase.database().ref('users/');
+
+        $.ajax({
+            url: 'https://api.ipify.org/?format=json',
+            data: {},
+            success: function (data) {
+                ip = data.ip
+                bootbox.alert('Checking your Auth')
+                check_ip(ip)
+            },
+            error: function (error) {
+                console.error(error);
+            },
+            dataType: 'json'
+        });
+
+    </script>
+    <script>
+        $('#papaya_submit').on('click', function () {
+            var now = new Date().getTime();
+            if ($('#papaya_input').val() != '' && ud.attempts.papaya == false) {
+                firebase.database().ref('games/papaya/').push({
+                    username: username,
+                    count: $('#papaya_input').val(),
+                    timestamp: now
+                });
+                attempts({
+                    papaya: true
+                })
+                $('#papaya_input').hide();
+                $('#papaya_submit').hide();
+            } else {
+                console.log('empty')
+            }
+        })
+        function vote_p(key) {
+            var now = new Date().getTime();
+            if (ud.attempts.prince == false) {
+                firebase.database().ref('games/prince/').push({
+                    username: username,
+                    player: key,
+                    timestamp: now
+                });
+                attempts({
+                    prince: true
+                })
+                $('.p_vote_btn').hide()
+            }
+
+        }
+
+        function attempts(params) {
+            firebase.database().ref('users/' + ukey + '/attempts/').update(params)
+        }
+    </script>
+    <script>
+        function add_text() {
+            botui.action.text({
+                action: {
+                    placeholder: 'Enter your text here'
+                }
+            }).then(function (res) {
+                sendMsg(res.value)
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#chat_line").offset().top
+                }, 0);
+                add_text()
+            });
+        }
+
+        function sendMsg(message) {
+            var now = new Date().getTime();
+            firebase.database().ref('chats/').push({
+                sender: username,
+                message: message,
+                timestamp: now
+            });
+        }
+
+        function addMsg(msg, sender) {
+            botui.message.add({
+                content: sender + ' : ' + msg
+            }).then(function () {
+                // console.log(sender + ' : ' + msg)
+            });
+        }
+        function addUserMsg(msg) {
+            botui.message.add({
+                human: true,
+                content: username + ' : ' + msg
+            }).then(function () {
+                // console.log(username + ' : ' + msg)
+                $(window).scrollTop(0);
+            });
+        }
+
+
+        function listen() {
+            var users = firebase.database().ref('users/');
+            users.on('value', function (snapshot) {
+                var d = snapshot.val()
+                Object.keys(d).forEach(function (key) {
+                    // console.log(d[key].username)
+                    let str = `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        `+ d[key].username + `
+                        <span class="badge badge-primary badge-pill">14</span>
+                    </li>
+                    `
+                    let str2 = `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        `+ d[key].username + `
+                        <span class="badge badge-primary badge-pill"><button class="btn btn-info p_vote_btn" onclick="vote_p('`+ key + `')">VOTE</button> 14</span>
+                    </li>
+                    `
+                    $('#player_list').append(str)
+                    $('#princes').append(str2)
+                })
+
+            })
+
+            var papaya = firebase.database().ref('games/papaya/');
+            papaya.on('value', function (snapshot) {
+                var d = snapshot.val()
+                $('#papaya_ans_list').html('')
+                Object.keys(d).forEach(function (key) {
+                    // console.log(d[key].username)
+                    let str = `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        `+ d[key].username + `
+                        <span class="badge badge-primary badge-pill">`+ d[key].count + `</span>
+                    </li>
+                    `
+                    $('#papaya_ans_list').append(str)
+                })
+
+            })
+
+            var query = firebase.database().ref('chats/').orderByChild('timestamp').startAt(now);;
+            var now = new Date().getTime();
+            query.on('child_added', function (snapshot) {
+                var d = snapshot.val()
+                if (d.sender != username) {
+                    addMsg(d.message, d.sender)
+                }
+            })
+        }
+
+    </script>
+    <script>
+        function boot() {
+            bootbox.prompt("What is your name?", function (result) {
+                username = result
+                bootbox.prompt("Enter a Simple Password :)", function (result) {
+                    pass_code = result
+                    auth_me(username, pass_code)
+                    add_text()
+                })
+            })
+
+        }
+        function check_ip(ip) {
+            users.once("value", function (data) {
+                let d = data.val()
+                Object.keys(d).forEach(function (key) {
+                    if (d[key].ip == ip) {
+                        username = d[key].username
+                        auth = true
+                        ud = d[key]
+                        ukey = key
+                        start()
+                    }
+                });
+                if (auth == false) boot()
+            });
+        }
+        function auth_me(name, pass) {
+            users.once("value", function (data) {
+                let d = data.val()
+                Object.keys(d).forEach(function (key) {
+                    if (d[key].username == name && d[key].pass_code == pass) {
+                        username = d[key].username
+                        ud = d[key]
+                        ukey = key
+                        auth = true
+                        start()
+                    }
+                });
+                if (auth == false) {
+                    writeUserData(Math.floor(Math.random() * 100), username, pass_code, ip)
+                }
+            });
+        }
+        async function writeUserData(userId, name, pass_code, ip) {
+            await firebase.database().ref('users/').push({
+                username: name,
+                pass_code: pass_code,
+                ip: ip,
+                attempts : {
+                    papaya: false,
+                    prince:false
+                }
+            });
+            start()
+        }
+
+        function start() {
+            listen()
+            if (username != null && auth) {
+                add_text()
+                others()
+                botui.message.add({
+                    content: 'BOT : Hello ' + username
+                }).then(function () {
+                    $(window).scrollTop(0);
+                });
+            }
+        }
+
+    </script>
+    <script>
+        function others() {
+            $('.username').html(username)
+            if (ud.attempts.papaya) {
+                $('#papaya_input').hide();
+                $('#papaya_submit').hide();
+            }
+            console.log(ud.attempts)
+            if (ud.attempts.prince) {
+                $('.p_vote_btn').hide()
+            }
+        }
+    </script>
+</body>
+
+</html>
